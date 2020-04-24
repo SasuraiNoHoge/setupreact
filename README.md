@@ -1,9 +1,12 @@
 # react + typescript の環境構築を 1 コマンドで
 
-Mac+VSCode+yarn 環境のみですが react.js + typescript + parcel + prettier の環境構築を  
+Mac+VSCode+yarn 環境のみですが  
+react.js + typescript + parcel + prettier の環境構築を  
 1 コマンドで完了するシェルスクリプトを書きました．
 
-## はっぽんさんの動画を参考にして構築しています[https://www.youtube.com/watch?v=vrNWUL635A0](https://www.youtube.com/watch?v=vrNWUL635A0)
+## はっぽんさんの動画を参考にして構築しています
+
+## [https://www.youtube.com/watch?v=vrNWUL635A0](https://www.youtube.com/watch?v=vrNWUL635A0)
 
 ### 導入の注意
 
@@ -28,6 +31,4 @@ VSCode で Prettier を動かすにはに`Prettier-Code formatter`を
  ./setUpReact.sh
 ```
 
-#### 実行例
-
-![デモ]()
+![デモ](https://github.com/SasuraiNoHoge/setupreact/blob/master/outputreact.gif)
