@@ -31,4 +31,8 @@ VSCode で Prettier を動かすにはに`Prettier-Code formatter`を
  ./setUpReact.sh
 ```
 
+### 追記
+
+pyenv を使っている方は`setUpReact_pyenv.sh`ファイルをご利用ください
+
 ![デモ](https://github.com/SasuraiNoHoge/setupreact/blob/master/outputreact.gif)
