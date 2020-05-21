@@ -44,4 +44,4 @@ function format(){
     " .eslintrc.js
 }
 
-init ; writeScript ; npx tsc ; format ; pyenv local 3.8.2 ; yarn start
+init ; writeScript ; npx tsc ; format ; yarn add --dev typesync ; npx typesync ; pyenv local 3.8.2 ; yarn start
