@@ -33,6 +33,7 @@ VSCode で Prettier を動かすにはに`Prettier-Code formatter`を
 
 ### 追記
 
-pyenv を使っている方は`setUpReact_pyenv.sh`ファイルをご利用ください
+pyenv を使っている方は`setUpReact_pyenv.sh`ファイルをご利用ください  
+`setUpReact_pyenv_debug.sh`で，[Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)と[Browser Preview](https://marketplace.visualstudio.com/items?itemName=auchenberg.vscode-browser-preview)に対応しました
 
 ![デモ](https://github.com/SasuraiNoHoge/setupreact/blob/master/outputreact.gif)
