@@ -33,11 +33,49 @@ function writeScript(){
   \      \"DOM\",\\
   \      \"ES2015\"\\
   \    ],\\
+  " tsconfig.json ; value=$(sed -n '/"outDir": /=' tsconfig.json) ; row=$((${value})) ; sed -i "" "${row}i\\
+  \    \"outDir\": \"./dist\",\\
   " tsconfig.json ; echo dist/ >> .gitignore ; echo .cache/ >> .gitignore
 }
 
+function createeslintrc(){
+  touch .eslintrc.js
+
+echo "module.exports = {
+  env: {
+    browser: true,
+    es6: true,
+  },
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+  ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+  },
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 11,
+    sourceType: 'module',
+  },
+  plugins: [
+      "prettier",
+    'react',
+    '@typescript-eslint',
+  ],
+  rules: {
+      quotes: double,
+  },
+};
+" > .eslintrc.js
+}
+
 function format(){
-    yarn add --dev prettier ; yarn format ; yarn format --write ; npx eslint --init ; value=$(sed -n '/rules: {/=' .eslintrc.js) ; row=$((1+${value})) ; sed -i "" "${row}i\\
+    yarn add --dev prettier ; yarn format ; yarn format --write ; yarn add --dev eslint ; createeslintrc ; yarn add --dev eslint-plugin-react@^7.19.0 @typescript-eslint/eslint-plugin@latest eslint-config-airbnb@latest eslint@^5.16.0 || ^6.8.0 eslint-plugin-import@^2.20.1 eslint-plugin-jsx-a11y@^6.2.3 eslint-plugin-react-hooks@^2.5.0 || ^1.7.0 @typescript-eslint/parser@latest ; value=$(sed -n '/rules: {/=' .eslintrc.js) ; row=$((1+${value})) ; sed -i "" "${row}i\\
     \      quotes: "double",\\
     " .eslintrc.js ; yarn add --dev eslint-plugin-prettier ; value=$(sed -n '/plugins: /=' .eslintrc.js) ; row=$((1+${value})) ; sed -i "" "${row}i\\
     \      \"prettier\",\\
@@ -45,7 +83,7 @@ function format(){
 }
 
 function vsconfig(){
- mkdir -p .vscode ; touch ./.vscode/launch.json ; echo "{\n \"version\": \"0.1.0\",\n  \"configurations\": [\n    {\n     \"type\": \"browser-preview\",\n      \"request\": \"launch\",\n      \"name\": \"Browser Preview: Launch\",\n      \"url\": \"http://localhost:1234\"\n    }\n ]\n}" > ./.vscode/launch.json ; echo ./.vscode >> ./.gitignore
+ mkdir -p .vscode ; touch ./.vscode/launch.json ; echo "{\n \"version\": \"0.1.0\",\n  \"configurations\": [\n    {\n     \"type\": \"browser-preview\",\n      \"request\": \"launch\",\n      \"name\": \"Browser Preview: Launch\",\n      \"url\": \"http://localhost:1234\"\n    }\n ]\n}" > ./.vscode/launch.json ; echo .vscode/ >> ./.gitignore
 }
 
 init ; writeScript ; npx tsc ; format ; yarn add --dev typesync ; npx typesync ; pyenv local 3.8.2 ; vsconfig ; yarn start

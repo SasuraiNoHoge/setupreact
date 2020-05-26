@@ -35,7 +35,7 @@ function writeScript(){
 }
 
 function format(){
-    yarn add --dev prettier ; yarn format ; yarn format --write ; npx eslint --init ; value=$(sed -n '/rules: {/=' .eslintrc.js) ; row=$((1+${value})) ; sed -i "" "${row}i\\
+    yarn add --dev prettier ; yarn format ; yarn format --write ; yarn add --dev eslint ; npx eslint --init ; value=$(sed -n '/rules: {/=' .eslintrc.js) ; row=$((1+${value})) ; sed -i "" "${row}i\\
     \      quotes: "double",\\
     " .eslintrc.js ; yarn add --dev eslint-plugin-prettier ; value=$(sed -n '/plugins: /=' .eslintrc.js) ; row=$((1+${value})) ; sed -i "" "${row}i\\
     \      \"prettier\",\\
